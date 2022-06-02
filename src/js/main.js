@@ -1,6 +1,6 @@
 import * as THREE from 'three';
-import { OrbitControls } from "./controls/OrbitControls.js";
-import GUI from "https://cdn.jsdelivr.net/npm/lil-gui@0.15/+esm";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import GUI from "lil-gui";
 import WebGL from './webgl';
 
 if ( WebGL.isWebGLAvailable() ) {
@@ -10,6 +10,14 @@ if ( WebGL.isWebGLAvailable() ) {
 
   //UIデバッグ
   const gui = new GUI();
+  const myGeometry = {
+    myRadius: 15.00,
+    myWidthSegments: 32,
+    myHeightSegments: 16
+  };
+  gui.add( myGeometry, "myRadius", 0, 15 );
+  gui.add( myGeometry, "myWidthSegments", 0, 32 ).step(1);
+  gui.add( myGeometry, "myHeightSegments", 0, 16 ).step(1);
 
   //サイズ
   const sizes = {
@@ -44,6 +52,7 @@ if ( WebGL.isWebGLAvailable() ) {
    */
   // ジオメトリ
   const particlesGeometry = new THREE.BufferGeometry;
+  // const particlesGeometry = new THREE.SphereGeometry( 15, 32, 16 );
   const count = 10000;
 
   const positionArray = new Float32Array(count * 3);
@@ -60,12 +69,14 @@ if ( WebGL.isWebGLAvailable() ) {
   // マテリアル
   const pointsMaterial = new THREE.PointsMaterial({
     size: 0.07,
+    // size: 1,
     vertexColors: true,
-    blending: THREE.AdditiveBlending
+    blending: THREE.AdditiveBlending,
   });
 
   // メッシュ化
   const particles = new THREE.Points(particlesGeometry, pointsMaterial);
+  // const particles = new THREE.Mesh(particlesGeometry, pointsMaterial);
 
   scene.add(particles);
 

@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-import GUI from "https://cdn.jsdelivr.net/npm/lil-gui@0.15/+esm";
+import GUI from "lil-gui";
 import WebGL from './webgl';
 
 if ( WebGL.isWebGLAvailable() ) {

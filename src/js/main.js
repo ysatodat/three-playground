@@ -29,8 +29,8 @@ if ( WebGL.isWebGLAvailable() ) {
   const scene = new THREE.Scene();
 
   // 座標軸の追加
-  const axesHelper = new THREE.AxesHelper( 5 );
-  scene.add( axesHelper );
+  // const axesHelper = new THREE.AxesHelper( 5 );
+  // scene.add( axesHelper );
 
   //カメラ
   const camera = new THREE.PerspectiveCamera(
@@ -65,11 +65,15 @@ if ( WebGL.isWebGLAvailable() ) {
   particlesGeometry.setAttribute("position", new THREE.BufferAttribute(positionArray, 3));
   particlesGeometry.setAttribute("color", new THREE.BufferAttribute(colorArray, 3));
 
+  // 画像を読み込む
+  const texture = new THREE.TextureLoader().load('src/images/star.png');
+
   // マテリアル
   const pointsMaterial = new THREE.PointsMaterial({
     size: 0.07,
     vertexColors: true,
     blending: THREE.AdditiveBlending,
+    map: texture,
   });
 
   // メッシュ化

@@ -66,7 +66,7 @@ if ( WebGL.isWebGLAvailable() ) {
   particlesGeometry.setAttribute("color", new THREE.BufferAttribute(colorArray, 3));
 
   // 画像を読み込む
-  const texture = new THREE.TextureLoader().load('src/images/star.png');
+  const texture = new THREE.TextureLoader().load('https://2.bp.blogspot.com/-AgmV1HMGECk/VskhfaiLH0I/AAAAAAAA4GU/X_BYiBCZCxU/s400/food_hoshi_shiitake.png');
 
   // マテリアル
   const pointsMaterial = new THREE.PointsMaterial({
